@@ -30,7 +30,8 @@ static volatile TouchScreenPos pos;
 #include "lvgl.h"
 #include "demo.h"
 #include "lv_test.h"
-
+// define this to get the right RGB order for the lv_color_t
+#define __BYTE_ORDER__=_
 //
 //
 //
@@ -46,8 +47,8 @@ lv_res_t btn_action(lv_obj_t * btn) {
 //
 static void lvTask(void *pvParameters) {
 #if 0
-	lv_style_scr.body.main_color = LV_COLOR_BLACK;
-	lv_style_scr.body.grad_color = LV_COLOR_BLACK;
+	lv_style_scr.body.main_color = LV_COLOR_RED;
+	lv_style_scr.body.grad_color = LV_COLOR_RED;
 
     static lv_style_t style;
     lv_style_copy(&style, &lv_style_plain);
@@ -76,12 +77,12 @@ static void lvTask(void *pvParameters) {
     //lv_obj_align(label1, NULL, LV_ALIGN_CENTER, 0, 0);
 #endif
 
-    demo_create();
+    //demo_create();
 
-    //lv_test_theme_1(lv_theme_night_init(210, NULL));
+    lv_test_theme_1(lv_theme_night_init(210, NULL));
 
 	while(1) {
-		vTaskDelay(5);
+		vTaskDelay(1);
 		lv_tick_inc(portTICK_RATE_MS);
 		lv_task_handler();
 	}
