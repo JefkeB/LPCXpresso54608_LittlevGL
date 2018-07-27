@@ -29,7 +29,7 @@ static volatile TouchScreenPos pos;
  ******************************************************************************/
 #include "lvgl.h"
 #include "demo.h"
-#include "lv_test_theme.h"
+#include "lv_test.h"
 
 //
 //
